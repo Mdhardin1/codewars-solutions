@@ -11,9 +11,8 @@ let persistence = num => {
     let arr = num.toString().split('');
     let newNum = num;
     while (newNum > 9) {
-        newNum = arr.reduce((acc, cur) => acc *= cur, 1)
-        console.log(newNum);
+        newNum = arr.reduce((acc, cur) => acc *= cur, 1);
         arr = newNum.toString().split('');
+        multCount++;
     }
 }
-persistence(999);
