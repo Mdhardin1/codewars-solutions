@@ -1,0 +1,74 @@
+// Implement a pseudo-encryption algorithm which given a string S and an integer N concatenates all the odd-indexed characters of S with all the even-indexed characters of S, this process should be repeated N times.
+
+// Examples:
+
+// encrypt("012345", 1)  =>  "135024"
+// encrypt("012345", 2)  =>  "135024"  ->  "304152"
+// encrypt("012345", 3)  =>  "135024"  ->  "304152"  ->  "012345"
+
+// encrypt("01234", 1)  =>  "13024"
+// encrypt("01234", 2)  =>  "13024"  ->  "32104"
+// encrypt("01234", 3)  =>  "13024"  ->  "32104"  ->  "20314"
+// Together with the encryption function, you should also implement a decryption function which reverses the process.
+
+// If the string S is an empty value or the integer N is not positive, return the first argument without changes.
+
+//PREP
+//Parameters
+//given a string and a number, the number should be positive and the string have some length but if not just return the first parameter
+
+//Return
+//return a new string that is "encrypted". The string should be concatenated with all the odd indexed characters next to each other at the beginning and the even indexed characters right behind those on the end. This process should be repeated N times to complete the process.
+
+//Examples
+
+//Pseudocode
+function encrypt(text, n) {
+    
+    if (text == ''|| n <= 0 || text == null) {
+        return text;
+    }
+    for (let i = 1; i <= n; i++){
+        let arr = [];
+        for (let j = 1; j < text.length; j+=2) {
+                arr.push(text[j]);
+        }
+        for (let k = 0; k < text.length; k+=2) {
+                arr.push(text[k]);
+        }
+        text = arr.join('');
+    }
+    return text
+}
+
+function decrypt(encryptedText, n) {
+  if (encryptedText == ''|| n <= 0 || encryptedText == null) {
+        return encryptedText;
+    } 
+  
+  for (let i = 1; i <= n; i++) {
+        let oddArr = [];
+        let evenArr = [];
+        let arr = '';
+        for (let j = 1; j < encryptedText.length; j+=2) {
+            oddArr.push(encryptedText[j])
+        }
+        for (let k = 0; k <= encryptedText.length; k+=2) {
+            evenArr.push(encryptedText[k])
+        }
+        console.log(evenArr, oddArr)
+        for (let l = 0; l < oddArr.length * 2; l++) {
+          if (evenArr[l]) {
+            arr = arr + evenArr[l];
+            }
+//           if (oddArr[l]) {
+//             arr = arr + oddArr[l];
+//           }
+        }
+    console.log(arr)
+        encryptedText = arr
+        
+        
+    }
+    return encryptedText;
+}
