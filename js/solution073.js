@@ -35,9 +35,5 @@ function zeroPlentiful(arr) {
             subArr = [];
         }
     }
-    if (newArr.filter(x => x.length >= 4).length == newArr.length){
-        return newArr.length;
-    }else {
-        return 0;
-    }
+    return newArr.filter(x => x.length >= 4).length == newArr.length ? newArr.length : 0;
 }
